@@ -25,18 +25,26 @@
     <!-- <td><a href="/leaves/<%= leave.id %>" ><%= leave.comments %></td>   -->   	
     <td><%= leave.comments %></td>
 
+    <!-- <% if can? :update, @user %>
+    <td><%= link_to "Approve", leaves_update_path(@leave, :id => leave.id, :emp_id => leave.emp_id, :status => 1, :leavetype_id => leave.leavetype_id, :comments => "hey am not mad" ), :method=> :put %></td>    
+    <% end %>  -->
+    
+    <!--Check the user role and provide the edit option -->
     <% if can? :update, @user %>
-    <td><%= link_to "Approve", leaves_update_path(@leave, :id => leave.id, :date => leave.date, :emp_id => leave.emp_id, :status => 1, :leavetype_id => leave.leavetype_id, :comments => "hey am not mad" ), :method=> :put %></td>    
+        <td rowspan = leave.leavedays.count>
+    	<% leave.leavedays.each do |leaveday| %>
+		&nbsp<%= leaveday.date %> &nbsp <input type="checkbox" name=leaveday.date value=leaveday.id/></br>
     <% end %> 
-    
-    <% leave.leavedays.each do |leaveday| %>
-    <td>&nbsp<%= leaveday.date %> &nbsp <INPUT TYPE=CHECKBOX ></td> 
-    <% end %> 
-  
-    <td>
-    &nbsp<button type="button">Approve</button> 
     </td>
-    
+	<td>&nbsp<%= link_to "Approve", leaves_update_path(@leave, :id => leave.id, :emp_id => leave.emp_id, :status => 1, :leavetype_id =>leave.leavetype_id, :comments =>leave.comments), :method=> :post %></td>
+	<td>&nbsp<%= link_to "Deny", leaves_destroy_path(@leave, :id => leave.id), :method=> :post %></td>
+	<% else %>   
+	     <td rowspan = leave.leavedays.count>
+	     <% leave.leavedays.each do |leaveday| %>
+	     &nbsp<%= leaveday.date %> </br>
+         <% end %>     
+         </td>
+    <% end %> 
   </tr>
 <% end %>
 </table>

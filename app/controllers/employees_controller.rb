@@ -99,9 +99,4 @@ class EmployeesController < ApplicationController
     end
   end
 
-def uploadFile
-   post = Employee.save(params[:upload])
-   render :text => "File has been uploaded successfully"
-end
-  
 end

@@ -56,6 +56,9 @@ Panaintranet::Application.routes.draw do
   match 'leaves/update', :controller=>'leaves', :action=>'update'
   
   #This line will root the request to the leaves controller and display the show.html.erb template
+  match 'leaves/destroy', :controller=>'leaves', :action=>'destroy'
+
+  #This line will root the request to the leaves controller and display the show.html.erb template
   match '/leaves/:id', :controller=>'leaves', :action=>'show'
   
   #This line will root the request to the leaves controller and display the show.html.erb template
