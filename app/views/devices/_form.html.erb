@@ -1,0 +1,65 @@
+<%= form_for(@device) do |f| %>
+  <% if @device.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@device.errors.count, "error") %> prohibited this device from being saved:</h2>
+
+      <ul>
+      <% @device.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :device_name %><br />
+    <%= f.text_field :device_name %>
+  </div>
+  <div class="field">
+    <%= f.label :model %><br />
+    <%= f.text_field :model %>
+  </div>
+  <div class="field">
+    <%= f.label :serial_no %><br />
+    <%= f.text_field :serial_no %>
+  </div>
+  <div class="field">
+    <%= f.label :unit_price %><br />
+    <%= f.text_field :unit_price %>
+  </div>
+  <div class="field">
+    <%= f.label :quantity %><br />
+    <%= f.text_field :quantity %>
+  </div>
+  <div class="field">
+    <%= f.label :calibration_due_date %><br />
+    <%= f.date_select :calibration_due_date %>
+  </div>
+  <div class="field">
+    <%= f.label :received_date %><br />
+    <%= f.date_select :received_date %>
+  </div>
+  <div class="field">
+    <%= f.label :shipped_date %><br />
+    <%= f.date_select :shipped_date %>
+  </div>
+  <div class="field">
+    <%= f.label :comments %><br />
+    <%= f.text_area :comments, :size => "50x4" %>   
+  </div>
+  <div class="field">
+    <%= f.label :Curently_in_PaNa? %>
+    <%= f.check_box :status %>
+  </div>
+  <div>
+    <%= f.label :owner %><br />
+	<%= f.select("owner_id", Employee.find(:all).collect {|c| [c.name, c.id]})%>
+  </div>  
+ <div>
+    <br /><%= f.label :project %><br />
+	<%= f.select("project_id", Project.find(:all).collect {|c| [c.name, c.id]})%>
+ </div>  
+ <div class="actions">
+    <br /><%= f.submit %>
+  </div>
+<% end %>

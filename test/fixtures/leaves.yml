@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  date: 2013-12-26
+  status: 1
+  emp_id: 1
+  leavetype_id: 1
+  comments: MyText
+
+two:
+  date: 2013-12-26
+  status: 1
+  emp_id: 1
+  leavetype_id: 1
+  comments: MyText

@@ -1,0 +1,33 @@
+
+
+<p>
+  <b>Date:</b>
+  <%= @leave.date %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @leave.status %>
+</p>
+
+<p>
+  <b>Emp:</b>
+  <%= @leave.emp_id %>
+</p>
+
+<p>
+  <b>Leavetype:</b>
+  <%= @leave.leavetype_id %>
+</p>
+
+<p>
+  <b>Comments:</b>
+  <%= @leave.comments %>
+</p>
+
+<p>
+ <% for leaveday in @leave.leavedays %> 
+    <td><%= leaveday.date %></td>  
+    <% end %> 
+</p>    
+

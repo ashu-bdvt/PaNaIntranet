@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  device_name: MyString
+  model: MyString
+  serial_no: MyString
+  unit_price: 1.5
+  quantity: 
+  calibration_due_date: 2013-12-20
+  received_date: 2013-12-20
+  shipped_date: 2013-12-20
+  comments: MyText
+  status: false
+  owner_id: 
+  project_id: 
+
+two:
+  device_name: MyString
+  model: MyString
+  serial_no: MyString
+  unit_price: 1.5
+  quantity: 
+  calibration_due_date: 2013-12-20
+  received_date: 2013-12-20
+  shipped_date: 2013-12-20
+  comments: MyText
+  status: false
+  owner_id: 
+  project_id: 

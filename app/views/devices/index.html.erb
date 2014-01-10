@@ -1,0 +1,67 @@
+<style type="text/css">
+table.hovertable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #999999;
+	border-collapse: collapse;
+}
+table.hovertable th {
+	background-color:#c3dde0;
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+table.hovertable tr {
+	background-color:#d4e3e5;
+}
+table.hovertable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+</style>
+
+<h1>Listing devices</h1>
+
+<%= link_to 'New Device', new_device_path %>
+
+<!-- Table goes in the document BODY -->
+<table class="hovertable">
+<tr>
+	<th>Device name</th>
+    <th>Model</th>
+    <th>Serial no</th>
+    <th>Unit price</th>
+    <th>Quantity</th>
+    <th>Calibration due date</th>
+    <th>Received date</th>
+    <th>Shipped date</th>
+    <th>Comments</th>
+    <th>Curently in PaNa</th>   
+</tr>
+
+<% @devices.each do |device| %>
+
+<tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">	
+	<td><%= link_to device.device_name, device %></td>	
+	<td><%= device.model %></td>
+    <td><%= device.serial_no %></td>
+    <td><%= device.unit_price %></td>
+    <td><%= device.quantity %></td>
+    <td><%= device.calibration_due_date %></td>
+    <td><%= device.received_date %></td>
+    <td><%= device.shipped_date %></td>
+    <td><%= device.comments %></td>
+    <% if device.status == true %>
+    <td>Yes</td>
+    <% else %>
+    <td>No</td>
+    <% end %>
+</tr>
+<% end %>
+</table>
+<%= link_to "Back", '/' %>

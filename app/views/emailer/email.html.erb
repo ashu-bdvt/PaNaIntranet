@@ -1,0 +1,24 @@
+
+<%= form_for :email, :url => '/email/send' do |f| %>
+  
+  <br><%= f.label :Recipients %>
+   <%= f.select("recipient", Employee.find(:all).collect {|c| [c.email]}, :prompt => true, :multiple => true )%><br />
+  
+   <br><%= f.label :CC %>
+   <%= f.select("cc", Employee.find(:all).collect {|c| [c.email]})%><br />
+ 
+   <br><%= f.label :BCC  %>
+   <%= f.select("bcc", Employee.find(:all).collect {|c| [c.email]})%><br />
+
+
+   <br><%= f.label :Subject %>
+   <%= f.text_field :subject %><br />
+   
+   <br><%= f.label :Message %>
+   <%= f.text_area :message %> <br/>
+   
+   <br><%= f.submit "send" %><br />
+  
+<% end %>
+
+<%= link_to "Back", '/' %>

@@ -1,0 +1,45 @@
+<h1>Listing leaves</h1>
+
+<li> <%= link_to "New Leave", controller: "leaves", action: "new" %></li>  
+
+<table border="1">
+  <tr>
+    <th>Emp</th>
+    <th>Status</th>
+    <th>Leavetype</th>
+    <th>Comments</th>
+    <th>Dates</th>
+  </tr>
+
+<% @leaves.each do |leave| %>
+  <tr>
+  	<td><%= leave.employee.name %></td>
+  	
+  	<% if leave.status == 1 %>
+    <td>Approved</td>
+    <%else%>
+    <td>Pending</td>
+    <% end %> 
+  	
+    <td><%= leave.leavetype.name %></td>
+    <!-- <td><a href="/leaves/<%= leave.id %>" ><%= leave.comments %></td>   -->   	
+    <td><%= leave.comments %></td>
+
+    <% if can? :update, @user %>
+    <td><%= link_to "Approve", leaves_update_path(@leave, :id => leave.id, :date => leave.date, :emp_id => leave.emp_id, :status => 1, :leavetype_id => leave.leavetype_id, :comments => "hey am not mad" ), :method=> :put %></td>    
+    <% end %> 
+    
+    <% leave.leavedays.each do |leaveday| %>
+    <td>&nbsp<%= leaveday.date %> &nbsp <INPUT TYPE=CHECKBOX ></td> 
+    <% end %> 
+  
+    <td>
+    &nbsp<button type="button">Approve</button> 
+    </td>
+    
+  </tr>
+<% end %>
+</table>
+
+<%= link_to "Back", '/' %>
+<br />

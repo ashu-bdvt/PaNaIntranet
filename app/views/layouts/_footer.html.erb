@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sticky Header and Footer</title>
+<style type="text/css">
+/* Reset body padding and margins */
+body { margin:0; padding:0; }
+ 
+/* CSS for the content of page. I am giving top and bottom padding of 80px to make sure the header and footer do not overlap the content.*/
+#container { margin:0 auto; overflow:auto; padding:80px 0; width:940px; }
+#content{}
+ 
+/* Make Footer Sticky */
+#footer_container { background:#eee; border:1px solid #666; bottom:0; height:60px; left:0; position:fixed; width:100%; }
+#footer { line-height:60px; margin:0 auto; width:940px; text-align:center; }
+</style>
+</head>
+<body>
+<!-- BEGIN: Sticky Footer -->
+<div id="footer_container">
+    <div id="footer">
+        Footer Content
+    </div>
+</div>
+<!-- END: Sticky Footer -->
+</body>
+</html>

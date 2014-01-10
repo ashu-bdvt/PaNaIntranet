@@ -1,0 +1,27 @@
+<h1>Listing leavetypes</h1>
+
+<%= link_to 'New Leavetype', new_leavetype_path %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Max leaves</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @leavetypes.each do |leavetype| %>
+  <tr>
+    <td><%= leavetype.name %></td>
+    <td><%= leavetype.max_leaves %></td>
+    <td><%= link_to 'Show', leavetype %></td>
+    <td><%= link_to 'Edit', edit_leavetype_path(leavetype) %></td>
+    <td><%= link_to 'Destroy', leavetype, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to "Back", '/' %>

@@ -1,0 +1,350 @@
+<html>
+  <head>
+    <title>PaNa Infotech: Welcome PaNa</title>
+    <style type="text/css" media="screen">
+      body {
+        margin: 0;
+        margin-bottom: 25px;
+        padding: 0;
+        background-color: white;
+
+        font-family: "Lucida Grande", "Bitstream Vera Sans", "Verdana";
+        font-size: 13px;
+        color: #333;
+      }
+
+      h1 {
+        font-size: 28px;
+        color: #000;
+      }
+
+      a  {color: #03c}
+      a:hover {
+        background-color: #03c;
+        color: white;
+        text-decoration: none;
+      }
+
+      #page {
+        background-color: white;
+        width: 950px;
+        margin: 0;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      #content {
+        float: left;
+        background-image: url("assets/grants.png");
+      
+        border: 0px solid #aaa;
+        border-top: none;
+        padding: 25px;
+        width: 500px;
+      }
+
+      #sidebar {
+        float: left;
+        width: 175px;
+      }
+
+       #resbar {
+        text-align: right;
+        table-align: right;
+        float: right;
+        width: 175px;
+        width: 45%;
+        display: inline-block
+      }
+    
+       #probar {
+        text-align: right;
+        float: right;
+        width: 175px;
+        width: 45%;
+        display: inline-block
+      }
+
+      #footer {
+        clear: both;
+      }
+
+      #header, #about, #getting-started {
+        padding-left: 75px;
+        padding-right: 30px;
+      }
+
+
+      #header {
+        background-image: url("assets/Company_Logo.PNG");
+        background-repeat: no-repeat;
+        background-position: top left;
+        height: 64px;
+      }
+      #header h1, #header h2 {margin: 0}
+      #header h2 {
+        color: #888;
+        font-weight: normal;
+        font-size: 16px;
+      }
+
+
+      #about h3 {
+        margin: 0;
+        margin-bottom: 10px;
+        font-size: 14px;
+      }
+
+      #about-content {
+        background-color: #ffd;
+        border: 1px solid #fc0;
+        margin-left: -55px;
+        margin-right: -10px;
+      }
+      #about-content table {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 11px;
+        border-collapse: collapse;
+      }
+      #about-content td {
+        padding: 10px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+      }
+      #about-content td.name  {color: #555}
+      #about-content td.value {color: #000}
+
+      #about-content ul {
+        padding: 0;
+        list-style-type: none;
+      }
+
+      #about-content.failure {
+        background-color: #fcc;
+        border: 1px solid #f00;
+      }
+      #about-content.failure p {
+        margin: 0;
+        padding: 10px;
+      }
+
+      #getting-started {
+        border-top: 1px solid #ccc;
+        margin-top: 25px;
+        padding-top: 15px;
+      }
+      #getting-started h1 {
+        margin: 0;
+        font-size: 20px;
+      }
+      #getting-started h2 {
+        margin: 0;
+        font-size: 14px;
+        font-weight: normal;
+        color: #333;
+        margin-bottom: 25px;
+      }
+      #getting-started ol {
+        margin-left: 0;
+        padding-left: 0;
+      }
+      #getting-started li {
+        font-size: 18px;
+        color: #888;
+        margin-bottom: 25px;
+      }
+      #getting-started li h2 {
+        margin: 0;
+        font-weight: normal;
+        font-size: 18px;
+        color: #333;
+      }
+      #getting-started li p {
+        color: #555;
+        font-size: 13px;
+      }
+
+      #sidebar ul {
+        margin-left: 0;
+        padding-left: 0;
+      }
+      #sidebar ul h3 {
+        margin-top: 25px;
+        font-size: 16px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ccc;
+      }
+      #sidebar li {
+        list-style-type: none;
+      }
+      #sidebar ul.links li {
+        margin-bottom: 5px;
+      }
+
+      #resbar ul {
+        margin-left: 0;
+        padding-left: 0;
+      }
+      #resbar ul h3 {
+        margin-top: 25px;
+        font-size: 16px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ccc;
+      }
+      #resbar li {
+        list-style-type: none;
+        text-align: 
+      }
+      #resbar ul.links li {
+        margin-bottom: 5px;
+      }
+      
+      #probar ul {
+        margin-left: 0;
+        padding-left: 0;
+      }
+      #probar ul h3 {
+        margin-top: auto;
+        font-size: 16px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ccc;
+      }
+      #probar li {
+        list-style-type: none;
+      }
+      #probar ul.links li {
+        margin-bottom: 5px;
+      }
+      
+	  #nav-menu ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	  }
+
+	  #nav-menu li {
+		margin: 0 0.15em;
+	  }
+
+	#nav-menu li a {
+	background: url(background.gif) #B6B6B4 bottom left repeat-x;
+	height: 3em;
+	line-height: 2em;
+	
+	width: 15em;
+	display: block;
+	border: 0.2em solid #98AFC7;
+	color: #0d2774;
+	text-decoration: none;
+	text-align: center;
+	}
+
+	/* Hide from IE5-Mac \*/
+	#nav-menu li a
+	{
+	float: none
+	}
+	/* End hide */
+	
+	#nav-menu
+	{
+	width:30em
+	} 	
+		   
+      .filename {
+        font-style: italic;
+      }
+    </style>
+    <script type="text/javascript">
+      function about() {
+        info = document.getElementById('about-content');
+        if (window.XMLHttpRequest)
+          { xhr = new XMLHttpRequest(); }
+        else
+          { xhr = new ActiveXObject("Microsoft.XMLHTTP"); }
+        xhr.open("GET","rails/info/properties",false);
+        xhr.send("");
+        info.innerHTML = xhr.responseText;
+        info.style.display = 'block'
+      }
+    </script>
+  </head>
+  <body>
+    <div id="page">
+    	<div id="nav-menu">
+          <ul>
+           <li> 
+              <% if can? :update, @user %> </li>
+                 <li> <%= link_to 'New Employee', new_employee_path %> </li>
+				 <li> <%= link_to "New Account", controller: "users", action: "new" %></li>
+				 <li> <%= link_to 'New Project', new_project_path %> </li>
+	             <li> <%= link_to 'New Holiday', new_holiday_path %></li>   	             
+	             <li> <%= link_to 'Leave Requests', leaves_path %></li>  	 
+	             <li> <%= link_to 'Leave Types', leavetypes_path %></li>                
+			  <% end %>
+			  <li> <%= link_to 'Device Inventory', devices_path %></li> 
+              <li> <%= link_to "Email", controller: "emailer", action: "email" %></li>   
+              <li> <%= link_to "Change your password", edit_user_registration_path %> </li> 
+              <li> <%= link_to "My Leaves", leaves_path %></li>               
+           </ul>
+        </div>
+        
+     <div id="page">
+      <div id="resbar">
+        
+          <li>
+            <h3>Resources</h3>
+            <table> 
+              <table border="1" align="right">
+            <% @employees.each do |employee| %>
+              <tr>
+                <td><%= link_to employee.name, employee %></td>      
+              </tr>
+            <% end %>
+            </table>
+          </li>
+        </ul>
+      </div>
+
+      <div id="page">
+      <div id="probar">
+        
+          <li>
+            <h3>Projects</h3>
+            <table>
+              <table border="1" align="right">
+            <% @projects.each do |project| %>
+              <tr>
+                <td><%= link_to project.name, project %></td>
+              </tr>
+            <% end %>
+            </table>
+          </li>
+        </ul>
+      </div>
+      
+      <div id="page">
+      <div id="probar">      
+          <li>
+            <h3>Upcoming Holidays</h3>
+            <table>
+              <table border="1" align="right" >
+            <% @holidays.each do |holiday| %>
+              <tr>
+              	<td><%= holiday.date %>: <%= link_to holiday.name, holiday %></td>                
+              </tr>
+            <% end %>
+            </table>
+          </li>
+        </ul>
+      </div>
+
+      <div id="footer" align="center">&nbsp;
+      	<br />
+      <i>PaNaInfoTech.Com © 2008</i>
+      </div>
+    </div>
+
+  </body>
+</html>

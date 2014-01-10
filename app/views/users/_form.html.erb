@@ -1,0 +1,43 @@
+<%= form_for(@user, :url => { :action => "create" }, :multipart => true) do |f| %>
+
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+ <div class="field">
+  
+  <% @temp = Employee.find(:last) %>
+  <%= f.label :Create_the_Login_Credential_for%> <%= @temp.name %><br /> 
+  <% emp_id = @temp.id %><br/>
+
+  <div class="field">
+    <%= f.label :emp_id %><br />
+    <%= f.select("emp_id", Employee.find(:all).collect {|c| [c.name, c.id]})%><br />
+  </div>
+
+  <div><%= f.label :email %><br/>
+  <%= f.email_field :email, :value => @temp.email, :autofocus => true %></div>
+
+  <div><%= f.label :password %><br />
+  <%= f.password_field :password %></div>
+
+  <div><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></div>
+  
+  <div><%= f.label :user_type %><br />
+  <%= f.collection_select :role, User::ROLES, :to_s, :humanize %><br />
+
+  <br /><div class="actions"><br /><%= f.submit %></div><br />
+  
+<% end %>
+  
+  
+  
