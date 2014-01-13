@@ -1,5 +1,20 @@
 class LeavesController < ApplicationController
   
+  #Handle auhentication and take the suer to login page in not signed in.
+  before_filter :authenticate_user!
+  
+  #Handle authorization and raise exception when the user does not have permission.
+  load_and_authorize_resource 
+  
+  #handle the cache and take the user to login page when back button is clicked after signout.
+  before_filter :set_cache_buster
+
+  def set_cache_buster
+    response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+  end
+  
   def new
     @leave = Leave.new
     3.times do
@@ -18,6 +33,7 @@ class LeavesController < ApplicationController
   # end
   
   def create
+    Rails.logger.info "Create Method called.."
     @leave = Leave.new(params[:leave])
     
     #Assign employee id of the user logged in
@@ -36,11 +52,7 @@ class LeavesController < ApplicationController
       end
     end    
   end
-  
-  def edit
-    
-  end
-  
+ 
   def index
      #@leaves = Leave.find(:all)
      if can? :update, @user 
@@ -56,11 +68,18 @@ class LeavesController < ApplicationController
     @leave = Leave.find(params[:id])
   end
   
+   # GET /leaves/1/edit
+  def edit
+    @leave = Leave.find(params[:id])
+    
+  end
+  
    def update  
     @leave = Leave.find(params[:id])
 
     respond_to do |format|
-      if @leave.update_attributes(status: params[:status])
+      
+       if @leave.update_attributes(params[:leave]) 
         format.html { redirect_to leaves_path, notice: 'Successfully updated the leave request' }
         format.json { render json: @leave, status: :created, location: @leave }
       else
@@ -72,11 +91,7 @@ class LeavesController < ApplicationController
    
   def show
     @leave = Leave.find(params[:id])
-    for leaveday in @leave.leavedays 
-      Rails.logger.info "I am here....................."
-      Rails.logger.info  leaveday.leave_id 
-      Rails.logger.info "I am done....................."
-    end
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @leave }
@@ -92,6 +107,5 @@ class LeavesController < ApplicationController
       format.json { head :no_content }
     end
   end  
-    
-    
+
 end

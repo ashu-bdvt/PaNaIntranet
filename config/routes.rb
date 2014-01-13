@@ -1,5 +1,5 @@
 Panaintranet::Application.routes.draw do
-  resources :leavetypes
+  resources :leave_types
 
   resources :devices
 
@@ -53,20 +53,11 @@ Panaintranet::Application.routes.draw do
   match 'leaves/create', :controller=>'leaves', :action=>'create'
   
   #This line will root the request to the leaves controller and display the show.html.erb template
-  match 'leaves/update', :controller=>'leaves', :action=>'update'
-  
-  #This line will root the request to the leaves controller and display the show.html.erb template
   match 'leaves/destroy', :controller=>'leaves', :action=>'destroy'
+ 
+  #This line will root the request to the leaves controller and display the show.html.erb template
+  match 'leaves/update', :controller=>'leaves', :action=>'update'
 
-  #This line will root the request to the leaves controller and display the show.html.erb template
-  match '/leaves/:id', :controller=>'leaves', :action=>'show'
-  
-  #This line will root the request to the leaves controller and display the show.html.erb template
-  #match 'leaves/edit', :controller=>'leaves', :action=>'edit'
-       
-  #This line will root the request to the leaves controller and display the show.html.erb template
-  #match 'leaves/:id', :controller=>'leaves', :action=>'show'
-   
   # Sample resource route with options:
   #   resources :products do
   #     member do

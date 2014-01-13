@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140110065911) do
+ActiveRecord::Schema.define(:version => 20140113130703) do
 
   create_table "devices", :force => true do |t|
     t.string   "device_name"
@@ -51,6 +51,13 @@ ActiveRecord::Schema.define(:version => 20140110065911) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "leave_types", :force => true do |t|
+    t.string   "name"
+    t.integer  "max_leaves"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "leavedays", :force => true do |t|
     t.date     "date"
     t.integer  "leave_id"
@@ -65,13 +72,6 @@ ActiveRecord::Schema.define(:version => 20140110065911) do
     t.text     "comments"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
-  end
-
-  create_table "leavetypes", :force => true do |t|
-    t.string   "name"
-    t.integer  "max_leaves"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "projects", :force => true do |t|

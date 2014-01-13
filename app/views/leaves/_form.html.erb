@@ -13,7 +13,7 @@
  
   <div>
     <%= f.label :Leave_type %><br/>
-	<%= f.select("leavetype_id", Leavetype.find(:all).collect {|c| [c.name, c.id]})%> <br/>
+	<%= f.select("leavetype_id", LeaveType.find(:all).collect {|c| [c.name, c.id]})%> <br/>
   </div>
 
   <div class="field">

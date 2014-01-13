@@ -33,11 +33,18 @@
     <% if can? :update, @user %>
         <td rowspan = leave.leavedays.count>
     	<% leave.leavedays.each do |leaveday| %>
-		&nbsp<%= leaveday.date %> &nbsp <input type="checkbox" name=leaveday.date value=leaveday.id/></br>
+		&nbsp<%= leaveday.date %> &nbsp <!-- <input type="checkbox" name=leaveday.date value=leaveday.id/> --></br>
     <% end %> 
     </td>
-	<td>&nbsp<%= link_to "Approve", leaves_update_path(@leave, :id => leave.id, :emp_id => leave.emp_id, :status => 1, :leavetype_id =>leave.leavetype_id, :comments =>leave.comments), :method=> :post %></td>
-	<td>&nbsp<%= link_to "Deny", leaves_destroy_path(@leave, :id => leave.id), :method=> :post %></td>
+	
+	<td>&nbsp<%= link_to "Approve", leaves_update_path(@leave, :id => leave.id, leave:{:id => leave.id, :status =>1}), :method=> :put %></td>
+    <!-- <td>&nbsp<%= link_to "Approve", leaves_update_path(@leave, :id => leave.id, leave:{:id => leave.id, :comments =>"working", leavedays_attributes: {test0:{:date => '01/11/2014', :_destroy => '1', :id =>'70'}, test1:{:date => '01/12/2014', :_destroy => false, :id =>'71'} }}), :method=> :put %></td> -->
+	<!-- <td>&nbsp<%= link_to "Approve", leaves_update_path(@leave, :id => leave.id, leave:{:id => leave.id, :comments =>"I am done", :status => 0}, leavedays_attributes: {:id=>'58', :_destroy=>'1'}), :method=> :put %></td>-->
+	<td>&nbsp<%= link_to "Deny", leaves_destroy_path(@leave, :id => leave.id), :method=> :post, data: { confirm: 'Are you sure, you want to deny the leave request '} %></td>
+	 
+	<!-- <td><%= link_to 'Edit', leaves_edit_path(leave) %></td>
+	<td><a href="/leaves/<%= leave.id %>/edit" ><%= leave.comments %></td>  -->
+	
 	<% else %>   
 	     <td rowspan = leave.leavedays.count>
 	     <% leave.leavedays.each do |leaveday| %>
@@ -51,3 +58,4 @@
 
 <%= link_to "Back", '/' %>
 <br />
+
