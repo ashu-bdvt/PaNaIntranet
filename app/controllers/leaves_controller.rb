@@ -4,7 +4,8 @@ class LeavesController < ApplicationController
   before_filter :authenticate_user!
   
   #Handle authorization and raise exception when the user does not have permission.
-  load_and_authorize_resource 
+  #load_and_authorize_resource 
+  load_and_authorize_resource :class => Leave
   
   #handle the cache and take the user to login page when back button is clicked after signout.
   before_filter :set_cache_buster

@@ -60,7 +60,7 @@ class HolidaysController < ApplicationController
 
     respond_to do |format|
       if @holiday.save
-        format.html { redirect_to @holiday, notice: 'Holiday was successfully created.' }
+        format.html { redirect_to '/holidays', notice: 'Holiday was successfully created.' }
         format.json { render json: @holiday, status: :created, location: @holiday }
       else
         format.html { render action: "new" }
@@ -76,7 +76,7 @@ class HolidaysController < ApplicationController
 
     respond_to do |format|
       if @holiday.update_attributes(params[:holiday])
-        format.html { redirect_to @holiday, notice: 'Holiday was successfully updated.' }
+        format.html { redirect_to '/holidays', notice: 'Holiday was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -43,13 +43,13 @@ Panaintranet::Application.routes.draw do
   #This line will root the request to the emailer controller and display the success message for the email sent 
   match 'email/send', :controller=>'emailer', :action=>'sendmail'
   
-  #This line will root the request to the leaves controller and display the show.html.erb template
-  match 'leaves/', :controller=>'leaves', :action=>'index'
+  #This line will root the request to the leaves controller and display the index.html.erb template
+  match '/leaves', :controller=>'leaves', :action=>'index'
 
-  #This line will root the request to the leaves controller and display the show.html.erb template
+  #This line will root the request to the leaves controller and display the _form.html.erb template
   match 'leaves/new', :controller=>'leaves', :action=>'new'
   
-  #This line will root the request to the leaves controller and display the show.html.erb template
+  #This line will root the request to the leaves controller and display the index.html.erb template
   match 'leaves/create', :controller=>'leaves', :action=>'create'
   
   #This line will root the request to the leaves controller and display the show.html.erb template
