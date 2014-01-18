@@ -7,9 +7,7 @@
     <th>Client</th>
     <th>Start date</th>
     <th>End date</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Actions</th>
   </tr>
 
 <% @projects.each do |project| %>
@@ -19,13 +17,13 @@
     <td><%= project.client %></td>
     <td><%= project.start_date %></td>
     <td><%= project.end_date %></td>
-    <td><%= link_to 'Show', project %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', project %>
+    <%= link_to 'Edit', edit_project_path(project) %>
+    <%= link_to 'Remove', project, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Project', new_project_path %>
+<button><%= link_to 'New Project', new_project_path %></button>
