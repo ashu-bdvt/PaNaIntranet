@@ -11,5 +11,6 @@
 </p>
 
 
-<button><%= link_to 'Edit', edit_leave_type_path(@leave_type) %> </button>
-<button><%= link_to 'Back', leave_types_path %></button>
+
+<%= button_to "Edit", edit_leave_types_path(@leave_type),:method => :get %>
+<%= button_to "Back", leave_types_path,:method => :get %>

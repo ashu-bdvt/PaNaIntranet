@@ -1,6 +1,6 @@
 <h1>Listing leaves</h1>
 
-<li> <%= link_to "New Leave", controller: "leaves", action: "new" %></li>  
+<li><%= link_to "New Leave", controller: "leaves", action: "new" %></li>  
 
 <table border="1">
   <tr>
@@ -9,6 +9,7 @@
     <th>Leavetype</th>
     <th>Comments</th>
     <th>Dates</th>
+    <th align="center">Actions</th>
   </tr>
 
 <% @leaves.each do |leave| %>
@@ -30,8 +31,8 @@
     <% end %> 
     </td>
 	
-	<td>&nbsp<%= link_to "Approve", leaves_update_path(@leave, :id => leave.id, leave:{:id => leave.id, :status =>1}), :method=> :put %></td>
-    <td>&nbsp<%= link_to "Deny", leaves_destroy_path(@leave, :id => leave.id), :method=> :post, data: { confirm: 'Are you sure, you want to deny the leave request '} %></td>
+	<td>&nbsp<%= link_to "Approve", leaves_update_path(@leave, :id => leave.id, leave:{:id => leave.id, :status =>1}), :method=> :put %> |
+    &nbsp<%= link_to "Deny", leaves_destroy_path(@leave, :id => leave.id), :method=> :post, data: { confirm: 'Are you sure, you want to deny the leave request '} %></td>
 
 	<% else %>   
 	     <td rowspan = leave.leavedays.count>
@@ -44,6 +45,6 @@
 <% end %>
 </table>
 
-<button><%= link_to "Back", '/' %></button>
+<%= button_to "Back", '/',:method => :get %>
 <br />
 

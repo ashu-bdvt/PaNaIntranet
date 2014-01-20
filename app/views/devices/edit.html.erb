@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<button><%= link_to 'Show', @device %></button> 
-<button><%= link_to 'Back', devices_path %></button>
+
+<%= button_to "Back",devices_path,:method => :get %>

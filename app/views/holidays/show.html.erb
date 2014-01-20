@@ -16,7 +16,8 @@
 </p>
 
 <% if can? :update, @holiday %>
-<button><%= link_to 'Edit', edit_holiday_path(@holiday) %> </button>
+<%= button_to "Edit", edit_holiday_path(@holiday),:method => :get %>
 <% end %>
 
-<button><%= link_to "Back", '/' %></button>
+<%= button_to "Edit",'/',:method => :get %>
+

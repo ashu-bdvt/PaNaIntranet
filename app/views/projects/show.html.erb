@@ -31,7 +31,7 @@
 </p>
 
 <% if can? :update, @project %>
-<button><%= link_to 'Edit', edit_project_path(@project) %></button>
+<%= button_to "Edit", edit_project_path(@project),:method => :get %>
 <% end %>
 
-<button><%= link_to "Back", '/' %></button>
+<%= button_to "Back", '/',:method => :get %>

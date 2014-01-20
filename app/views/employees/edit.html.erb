@@ -2,6 +2,9 @@
 
 <%= render 'form' %>
 
-<button><%= link_to 'Show', @employee %> </button>
-<button><%= link_to "Back", '/' %></button>
+<!-- <button><%= link_to 'Show', @employee %> </button>
+<button><%= link_to "Back", '/' %></button> -->
+
+<!-- <%= button_to "Show", @employee,:method => :get %> -->
+<%= button_to "Back", '/',:method => :get %>
 

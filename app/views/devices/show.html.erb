@@ -63,7 +63,7 @@
 </p>
 
 <% if can? :update, @device %>
-<%= link_to 'Edit', edit_device_path(@device) %> |
+<%= button_to "Edit", edit_device_path(@device),:method => :get %><br />
 <% end %>
 
-<button><%= link_to 'Back', devices_path %></button>
+<%= button_to "Back", devices_path,:method => :get %>

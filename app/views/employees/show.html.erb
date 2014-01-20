@@ -46,8 +46,7 @@
 </p>
 
 <% if can? :update, @employee %>
-<button><%= link_to 'Edit', edit_employee_path(@employee) %> </button>
+<%= button_to "Edit", edit_employee_path(@employee),:method => :get %>
 <% end %>
 
-<button><%= link_to "Back", '/' %></button>
-
+<%= button_to "Back", '/',:method => :get %>

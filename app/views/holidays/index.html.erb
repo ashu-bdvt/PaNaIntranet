@@ -22,5 +22,9 @@
 
 <br />
 
-<p align="center"><button><%= link_to 'New Holiday', new_holiday_path %></button>
+<!-- <p align="center"><button><%= link_to 'New Holiday', new_holiday_path %></button>
 <button><%= link_to "Back", '/' %></button></p>
+
+Proper methos to generate button action -->
+<%= button_to 'New Holiday', new_holiday_path,:method => :get %>
+<%= button_to "Back", '/',:method => :get %></p>

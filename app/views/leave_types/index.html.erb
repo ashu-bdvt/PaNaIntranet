@@ -19,5 +19,5 @@
 
 <br />
 
-<button><%= link_to 'New ', new_leave_type_path %><br /></button>
-<button><%= link_to "Back", '/' %></button>
+<%= button_to "New",  new_leave_type_path,:method => :get %>
+<%= button_to "Back", '/',:method => :get %>

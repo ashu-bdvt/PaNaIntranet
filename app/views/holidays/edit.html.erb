@@ -2,4 +2,11 @@
 
 <%= render 'form' %>
 
+<!-- Standard code
 <button><%= link_to "Back", '/holidays' %></button>
+
+Work around method
+<%= link_to "<button>BACK</button>".html_safe, '/holidays' %>
+
+Proper methos to generate button action -->
+<%= button_to "Back", '/holidays',:method => :get %>
