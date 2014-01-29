@@ -5,7 +5,7 @@ class LeavesController < ApplicationController
   
   #Handle authorization and raise exception when the user does not have permission.
   #load_and_authorize_resource 
-  load_and_authorize_resource :class => Leave
+  #load_and_authorize_resource :class => Leave
   
   #handle the cache and take the user to login page when back button is clicked after signout.
   before_filter :set_cache_buster
@@ -40,11 +40,8 @@ class LeavesController < ApplicationController
     #Assign employee id of the user logged in
     @leave.emp_id = current_user.employee.id
     
-    #Assign the status to zero (request)
-    @leave.status = 0 
- 
     respond_to do |format|
-      if @leave.save 
+      if @leave.save
         format.html { redirect_to leaves_path, notice: 'Successfully created the leave request.' }
         format.json { render json: @leave, status: :created, location: @leave }
       else
@@ -57,11 +54,12 @@ class LeavesController < ApplicationController
   def index
      #@leaves = Leave.find(:all)
      if can? :update, @user 
-       #Display all leave requests for the admin user
-       @leaves = Leave.where("status = '0'")            
+       #Display all leave requests for the admin user 
+       @leaves = Leave.joins(:leavedays).where("leavedays.status" => 2).order("created_at DESC").uniq      
       else  
         #Display all there leaves for the proadmin and employee user
-        @leaves = Leave.where("status = ? OR emp_id = ?", '1', current_user.employee.id)
+        #@leaves = Leave.where("emp_id" => current_user.employee.id)            
+        @leaves = Leave.where("emp_id" => current_user.employee.id).order("created_at DESC")     
      end
   end
   
@@ -77,7 +75,7 @@ class LeavesController < ApplicationController
   
    def update  
     @leave = Leave.find(params[:id])
-
+  
     respond_to do |format|
       
        if @leave.update_attributes(params[:leave]) 

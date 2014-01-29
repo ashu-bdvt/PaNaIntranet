@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140113130703) do
+ActiveRecord::Schema.define(:version => 20140128091421) do
 
   create_table "devices", :force => true do |t|
     t.string   "device_name"
@@ -63,10 +63,10 @@ ActiveRecord::Schema.define(:version => 20140113130703) do
     t.integer  "leave_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "status"
   end
 
   create_table "leaves", :force => true do |t|
-    t.integer  "status"
     t.integer  "emp_id"
     t.integer  "leavetype_id"
     t.text     "comments"

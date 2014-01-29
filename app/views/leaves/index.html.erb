@@ -1,47 +1,79 @@
+<style type="text/css">
+table.hovertable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #999999;
+	border-collapse: collapse;
+}
+table.hovertable th {
+	background-color:#c3dde0;
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+table.hovertable tr {
+	background-color:#d4e3e5;
+}
+table.hovertable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+</style>
+
 <h1>Listing leaves</h1>
 
 <li><%= link_to "New Leave", controller: "leaves", action: "new" %></li>  
 
-<table border="1">
+<table class="hovertable" style='width:100%'>
   <tr>
     <th>Emp</th>
-    <th>Status</th>
     <th>Leavetype</th>
     <th>Comments</th>
-    <th>Dates</th>
-    <th align="center">Actions</th>
+    <th>Dates</th>  
+    <% if can? :update, @user %>   
+    <th>Actions</th> 
+    <% end %>
   </tr>
 
 <% @leaves.each do |leave| %>
-  <tr>
-  	<td><%= leave.employee.name %></td>
-  	<% if leave.status == 1 %>
-    <td>Approved</td>
-    <%else%>
-    <td>Pending</td>
-    <% end %> 
-    <td><%= leave.leavetype.name %></td> 	
+
+  <tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+  	<%= form_for(leave, :url => {:controller => 'leaves', :id => leave.id, :action => 'update'} ) do |f| %>
+    <td><%= leave.employee.name %></td>    
+    <td><%= leave.leavetype.name %></td>            
     <td><%= leave.comments %></td>
     
-    <!--Check the user role and provide the edit option -->
-    <% if can? :update, @user %>
-        <td rowspan = leave.leavedays.count>
-    	<% leave.leavedays.each do |leaveday| %>
-		&nbsp<%= leaveday.date %>&nbsp <%= check_box_tag "id[]", leaveday.id %></br>
-    <% end %> 
-    </td>
-	
-	<td>&nbsp<%= link_to "Approve", leaves_update_path(@leave, :id => leave.id, leave:{:id => leave.id, :status =>1}), :method=> :put %> |
-    &nbsp<%= link_to "Deny", leaves_destroy_path(@leave, :id => leave.id), :method=> :post, data: { confirm: 'Are you sure, you want to deny the leave request '} %></td>
-
-	<% else %>   
-	     <td rowspan = leave.leavedays.count>
+    <!-- In the following table cell display all the dates belonging to each leave -->
+    <td rowspan = leave.leavedays.count width="14%" >    
+     <% if can? :update, @user %> 
+     	<% leave.leavedays.each do |leaveday| %>       
+	 		<%= f.fields_for :leavedays, leaveday do |leaveday_fields| %> 
+				<%= leaveday_fields.text_field(:date, readonly: true, size: 10) %><%= leaveday_fields.check_box :status, {:checked=>true}%> </br>
+	 		<% end %>          
+    	 <% end %>        
+     <% else %> 
 	     <% leave.leavedays.each do |leaveday| %>
-	     &nbsp<%= leaveday.date %> </br>
-         <% end %>     
-         </td>
-    <% end %> 
+	     &nbsp<%= leaveday.date %>
+	      <% if leaveday.status == 2 %> <img src="assets/Request.png" />
+   		  <%else if leaveday.status == 1 %> <img src="assets/Approved.png" />
+   		  <% else %><img src="assets/Denied.png" />
+    	  <% end %> <% end %> </br>
+	     
+         <% end %>   
+	<% end %></td>  
+     
+    <% if can? :update, @user %>   
+    	<td><%= f.submit "Approve" %></td>
+    <% end %>
+    
+	<% end %>
   </tr>
+  
 <% end %>
 </table>
 

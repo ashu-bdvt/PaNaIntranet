@@ -3,6 +3,8 @@
     </br><%= f.label :date %><br />
     <%= f.text_field :date, :class => 'datepicker', format: 'yyyy-mm-dd', daysOfWeekDisabled: '0,6', autoclose: 'true' %>  
     <%= f.hidden_field :_destroy %>
+    <!-- <%= f.check_box :status, {:checked=>false, :hidden =>true}%> -->
+    <%= f.hidden_field :status, value: 2 %>
     <%= link_to_function "remove", "remove_fields(this)" %>    
     </p>
 </div>
