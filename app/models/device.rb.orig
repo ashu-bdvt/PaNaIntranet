@@ -5,17 +5,19 @@ class Device < ActiveRecord::Base
   
   belongs_to :project_manager, :class_name => "Employee", :foreign_key => "owner_id"
   belongs_to :project, :class_name => "Project", :foreign_key => "project_id"
+<<<<<<< HEAD
+  
+  
+=======
     
+>>>>>>> c45b6a98a46f7338b9833d94bf548287dbe3a5bd
   def less_than_today
     if (received_date > Date.current )
       errors.add(:received_date, "must be less that current date")
     end
   end
+<<<<<<< HEAD
   
-  def less_than_today
-    if (received_date > Date.current )
-      errors.add(:received_date, "must be less that current date")
-    end
-  end
-  
+=======
+>>>>>>> c45b6a98a46f7338b9833d94bf548287dbe3a5bd
 end
