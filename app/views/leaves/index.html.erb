@@ -49,18 +49,18 @@ table.hovertable td {
     <td><%= leave.comments %></td>
     
     <!-- In the following table cell display all the dates belonging to each leave -->
-    <td rowspan = leave.leavedays.count width="14%" >    
+    <td rowspan = leave.leave_days.count width="14%" >    
      <% if can? :update, @user %> 
-     	<% leave.leavedays.each do |leaveday| %>       
-	 		<%= f.fields_for :leavedays, leaveday do |leaveday_fields| %> 
-				<%= leaveday_fields.text_field(:date, readonly: true, size: 10) %><%= leaveday_fields.check_box :status, {:checked=>true}%> </br>
+     	<% leave.leave_days.each do |leave_day| %>       
+	 		<%= f.fields_for :leave_days, leave_day do |leave_day_fields| %> 
+				<%= leave_day_fields.text_field(:date, readonly: true, size: 10) %><%= leave_day_fields.check_box :status, {:checked=>true}%> </br>
 	 		<% end %>          
     	 <% end %>        
      <% else %> 
-	     <% leave.leavedays.each do |leaveday| %>
-	     &nbsp<%= leaveday.date %>
-	      <% if leaveday.status == 2 %> <img src="assets/Request.png" />
-   		  <%else if leaveday.status == 1 %> <img src="assets/Approved.png" />
+	     <% leave.leave_days.each do |leave_day| %>
+	     &nbsp<%= leave_day.date %>
+	      <% if leave_day.status == 2 %> <img src="assets/Request.png" />
+   		  <%else if leave_day.status == 1 %> <img src="assets/Approved.png" />
    		  <% else %><img src="assets/Denied.png" />
     	  <% end %> <% end %> </br>
 	     

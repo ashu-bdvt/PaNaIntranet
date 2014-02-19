@@ -24,13 +24,13 @@
   <div class="actions">
   	
   <div>
-  <%= f.fields_for :leavedays do |builder| %> 
-  <%= render 'leaveday', :f => builder %>
+  <%= f.fields_for :leave_days do |builder| %> 
+  <%= render 'leave_day', :f => builder %>
   <% end %>
   </div>
   
   <div>	
-  <%= link_to_add_fields "Add Leaveday", f, :leavedays %>
+  <%= link_to_add_fields "Add Leaveday", f, :leave_days %>
   </div>
   			
   </br><%= f.submit %>

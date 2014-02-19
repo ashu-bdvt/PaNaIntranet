@@ -33,15 +33,15 @@
   </div>
   <div class="field">
     <%= f.label :calibration_due_date %><br />
-    <%= f.date_select :calibration_due_date %>
+    <%= f.text_field :calibration_due_date, :class => 'datepicker'%>
   </div>
   <div class="field">
     <%= f.label :received_date %><br />
-    <%= f.date_select :received_date %>
+    <%= f.text_field :received_date, :class => 'datepicker' %>
   </div>
   <div class="field">
     <%= f.label :shipped_date %><br />
-    <%= f.date_select :shipped_date %>
+    <%= f.text_field :shipped_date, :class => 'datepicker' %>
   </div>
   <div class="field">
     <%= f.label :comments %><br />

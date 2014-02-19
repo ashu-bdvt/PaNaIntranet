@@ -19,7 +19,7 @@ class LeavesController < ApplicationController
   def new
     @leave = Leave.new
     1.times do
-    leaveday = @leave.leavedays.build
+    leave_day = @leave.leave_days.build
   end
    
  end
@@ -55,7 +55,7 @@ class LeavesController < ApplicationController
      #@leaves = Leave.find(:all)
      if can? :update, @user 
        #Display all leave requests for the admin user 
-       @leaves = Leave.joins(:leavedays).where("leavedays.status" => 2).order("created_at DESC").uniq      
+       @leaves = Leave.joins(:leave_days).where("leave_days.status" => 2).order("created_at DESC").uniq      
       else  
         #Display all there leaves for the proadmin and employee user
         #@leaves = Leave.where("emp_id" => current_user.employee.id)            
