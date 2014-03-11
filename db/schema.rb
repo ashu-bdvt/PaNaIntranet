@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140128091421) do
+ActiveRecord::Schema.define(:version => 20140128064021) do
 
   create_table "devices", :force => true do |t|
     t.string   "device_name"
@@ -67,6 +67,8 @@ ActiveRecord::Schema.define(:version => 20140128091421) do
   end
 
   create_table "leaves", :force => true do |t|
+    t.date     "date"
+    t.integer  "status"
     t.integer  "emp_id"
     t.integer  "leavetype_id"
     t.text     "comments"
