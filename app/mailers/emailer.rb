@@ -1,5 +1,5 @@
 class Emailer < ActionMailer::Base
-   default :from => "shivakumar.gouda@gmail.com"
+   default :from => "shivakumar@panainfotech.com"
   
   def sendmail(recipient, subject, message)
     logger.info("Passed values")
@@ -14,7 +14,7 @@ class Emailer < ActionMailer::Base
  
  def welcome_email(user)
     @user = user
-    mail(to: @user.email, subject: 'Welcome to My Awesome Site')
+    mail(to: @user.email, subject: 'Registration Confirmation')
  end
  
 end

@@ -157,6 +157,7 @@ DEPENDENCIES
   devise
   heroku
   jquery-rails
+  mail
   pg
   rails (= 3.2.1)
   rails_12factor
