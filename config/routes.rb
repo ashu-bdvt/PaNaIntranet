@@ -1,15 +1,15 @@
 Panaintranet::Application.routes.draw do
-  resources :leave_types
+ resources :leave_types, :except => [:destroy, :show]
 
-  resources :devices
+  resources :devices, :except => [:destroy]
 
   devise_for :users
 
-  resources :holidays
+  resources :holidays, :except =>[:show]
 
-  resources :projects
+  resources :projects, :except => [:index, :destroy]
 
-  resources :employees
+  resources :employees, :except => [:index, :destroy]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
