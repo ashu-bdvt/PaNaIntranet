@@ -18,7 +18,7 @@ class LeavesController < ApplicationController
   
   def new
     @leave = Leave.new
-    3.times do
+    1.times do
     leaveday = @leave.leavedays.build
   end
    
