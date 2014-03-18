@@ -18,7 +18,6 @@ gem 'actionmailer'
 gem 'carrierwave'
 gem 'heroku'
 gem 'taps'
-gem "bootstrap-datepicker-rails"
 gem 'mail'
 
 #gem 'imagemagick'
