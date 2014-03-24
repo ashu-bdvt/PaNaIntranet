@@ -2,6 +2,7 @@ class Employee < ActiveRecord::Base
   belongs_to :manager, :class_name => "Employee", :foreign_key => "manager_id"
   has_many :devices
   has_many :leaves
+  has_many :timesheets
   has_one :user
 
   attr_accessible :address, :contact_number, :date_of_joining, :designation, :email, :manager_id, :name, :photo

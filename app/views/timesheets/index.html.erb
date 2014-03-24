@@ -1,0 +1,49 @@
+
+<div id="calendar">
+	
+<h2 id="month">
+    <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m-01") %>
+    <%= h @date.strftime("%B %Y") %>
+    <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m-01") %>
+  </h2>
+  	
+  <%= calendar_for @timesheets, :year => @date.year, :month => @date.month do |calendar| %>
+    <%= calendar.head('sun','mon', 'tue', 'wed', 'thu', 'fri', 'sat') %>
+    <%= calendar.day(:day_method => :date) do |date, timesheets| %>
+      <%= date.day %>
+      
+      <ul>
+      <% for timesheet in timesheets %>
+        <li><%= link_to h(timesheet.id), timesheet %></li>
+      <% end %>
+    </ul>
+      
+    <% end %>
+  <% end %>
+</div>
+
+<!-- <h1>Listing timesheets</h1>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Employee</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @timesheets.each do |timesheet| %>
+  <tr>
+    <td><%= timesheet.date %></td>
+    <td><%= timesheet.employee_id %></td>
+    <td><%= link_to 'Show', timesheet %></td>
+    <td><%= link_to 'Edit', edit_timesheet_path(timesheet) %></td>
+    <td><%= link_to 'Destroy', timesheet, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Timesheet', new_timesheet_path %> -->

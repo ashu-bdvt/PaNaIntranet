@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140319084459) do
+ActiveRecord::Schema.define(:version => 20140323124946) do
 
   create_table "devices", :force => true do |t|
     t.string   "device_name"
@@ -66,20 +66,19 @@ ActiveRecord::Schema.define(:version => 20140319084459) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "leavedays", :force => true do |t|
-    t.date     "date"
-    t.integer  "leave_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "status"
-  end
-
   create_table "leaves", :force => true do |t|
     t.integer  "emp_id"
     t.integer  "leavetype_id"
     t.text     "comments"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "leavetypes", :force => true do |t|
+    t.string   "name"
+    t.integer  "max_leaves"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "projects", :force => true do |t|
@@ -90,6 +89,13 @@ ActiveRecord::Schema.define(:version => 20140319084459) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "manager_id"
+  end
+
+  create_table "timesheets", :force => true do |t|
+    t.date     "date"
+    t.integer  "employee_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "users", :force => true do |t|
