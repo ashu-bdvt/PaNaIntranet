@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+
+
+<h2> Timesheet For the date </h2> </br>
 
 <p>
   <b>Date:</b>
@@ -9,6 +11,15 @@
   <b>Employee:</b>
   <%= @timesheet.employee.name %>
 </p>
+
+<% @timesheet.tasks.each do |task| %> 
+    <b>Time:</b>
+    <%= task. time%><br/>   
+    <b>Project:</b>  
+    <%= task. project.name %>  
+    <b>Comment:</b>  
+	<%= task.comment %>	 		      
+<% end %>    
 
 <%= link_to 'Edit', edit_timesheet_path(@timesheet) %> |
 <%= link_to 'Back', timesheets_path %>

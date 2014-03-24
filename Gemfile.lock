@@ -59,7 +59,6 @@ GEM
     excon (0.25.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    fullcalendar-rails (1.6.4.0)
     heroku (3.2.1)
       heroku-api (~> 0.3.7)
       launchy (>= 0.3.2)
@@ -159,7 +158,6 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 3.2.1)
   devise
-  fullcalendar-rails
   heroku
   jquery-rails
   mail

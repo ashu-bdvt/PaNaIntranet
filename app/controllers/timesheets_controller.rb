@@ -2,8 +2,11 @@ class TimesheetsController < ApplicationController
   # GET /timesheets
   # GET /timesheets.json
   def index
-    @timesheets = Timesheet.all
+    #@timesheets = Timesheet.all
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
+    
+    #Display only the timesheet of the employee who has logged in 
+    @timesheets = Timesheet.where("employee_id" => current_user.employee.id).all
     
     respond_to do |format|
       format.html # index.html.erb
@@ -26,6 +29,10 @@ class TimesheetsController < ApplicationController
   # GET /timesheets/new.json
   def new
     @timesheet = Timesheet.new
+    
+    1.times do
+    task = @timesheet.tasks.build
+    end
     
     respond_to do |format|
       format.html # new.html.erb

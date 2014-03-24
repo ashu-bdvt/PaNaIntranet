@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140323124946) do
+ActiveRecord::Schema.define(:version => 20140324055917) do
 
   create_table "devices", :force => true do |t|
     t.string   "device_name"
@@ -74,13 +74,6 @@ ActiveRecord::Schema.define(:version => 20140323124946) do
     t.datetime "updated_at",   :null => false
   end
 
-  create_table "leavetypes", :force => true do |t|
-    t.string   "name"
-    t.integer  "max_leaves"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.string   "client"
@@ -89,6 +82,15 @@ ActiveRecord::Schema.define(:version => 20140323124946) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "manager_id"
+  end
+
+  create_table "tasks", :force => true do |t|
+    t.integer  "timesheet_id"
+    t.integer  "time"
+    t.integer  "project_id"
+    t.text     "comment"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "timesheets", :force => true do |t|

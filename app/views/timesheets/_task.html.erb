@@ -1,0 +1,13 @@
+<div class="fields">
+	<p>
+    </br><%= f.label :Time %>
+    <%= f.select :time, [1,2,3,4,5,6,7] %> Hour
+    <%= f.label :Project %>
+     <%= f.select("project_id", Project.find(:all).collect {|c| [c.name, c.id]})%>  
+    <%= f.label :comments %>
+    <%= f.text_area :comment, :size => "40x4" %> 
+    <%= f.hidden_field :_destroy %>
+    <%= link_to_function "remove", "remove_fields(this)" %></br>
+    <h>===========================================================================================================</h>
+    </p>
+</div>
