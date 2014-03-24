@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/jchunky/table_builder.git
+  revision: 861e57bc1c1cddcf877db950fb400226be15ea71
+  specs:
+    table_builder (0.0.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -162,5 +168,6 @@ DEPENDENCIES
   rails_12factor
   sass-rails (~> 3.2.3)
   sqlite3
+  table_builder (= 0.0.3)!
   taps
   uglifier (>= 1.0.3)

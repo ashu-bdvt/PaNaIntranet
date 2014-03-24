@@ -19,6 +19,7 @@ gem 'carrierwave'
 gem 'heroku'
 gem 'taps'
 gem 'mail'
+gem 'table_builder', '0.0.3', :git => 'git://github.com/jchunky/table_builder.git'
 
 #gem 'imagemagick'
 #gem 'rmagick'

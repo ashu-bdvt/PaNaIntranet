@@ -11,7 +11,7 @@ class Leave < ActiveRecord::Base
   
   belongs_to :leavetype, :class_name => "LeaveType", :foreign_key => "leavetype_id"
   belongs_to :employee, :class_name => "Employee", :foreign_key => "emp_id"
-  
+ 
   has_many :leave_days, :dependent => :destroy  
   accepts_nested_attributes_for :leave_days, :allow_destroy => true, :reject_if => lambda { |a| a[:date].blank? }
    

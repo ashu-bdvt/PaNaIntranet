@@ -1,4 +1,6 @@
 Panaintranet::Application.routes.draw do
+  resources :timesheets
+
  resources :leave_types, :except => [:destroy, :show]
 
   resources :devices, :except => [:destroy]
