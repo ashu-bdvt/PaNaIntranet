@@ -2,6 +2,18 @@
 
 <%= link_to 'New Timesheet', new_timesheet_path %></br>
 
+<!-- <%= form_tag :action => 'index' do%>
+<strong>Select device: </strong>  <%= collection_select(:timesheet, :employee_id, Employee.all, :id, :name, prompt: true) %>
+
+<br></br>
+<% end %> -->
+
+<%= form_tag({ :action => "index"}, { :method => "get", :id => "contacts-index" }) do %>
+
+<%= collection_select(:timesheet, :employee_id, Employee.all, :id, :name, prompt: true, { :id => "switch-view" }) %>
+
+  <!-- <%= select_tag(:view, options_for_select([["10", 10], ["25", 25], ["50", 50]]), { :id => "switch-view" }) %> --><% end %>
+
 <div id="calendar">
 	
 <h2 id="month">

@@ -17,3 +17,8 @@ function add_fields(link, association, content) {
   // window.location.href = "/timesheets";
 // });
 
+$(document).ready(function() {
+  $("#switch-view").change(function() {
+    $("#contacts-index").submit();
+  });
+});

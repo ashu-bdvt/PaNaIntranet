@@ -74,6 +74,13 @@ ActiveRecord::Schema.define(:version => 20140324055917) do
     t.datetime "updated_at",   :null => false
   end
 
+  create_table "leavetypes", :force => true do |t|
+    t.string   "name"
+    t.integer  "max_leaves"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.string   "client"
