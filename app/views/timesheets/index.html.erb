@@ -1,18 +1,18 @@
-<h1>Listing timesheets</h1></br>
+<h2>Listing timesheets</h2></br>
 
-<%= link_to 'New Timesheet', new_timesheet_path %></br>
+<%= button_to "New Timesheet", new_timesheet_path,:method => :get %>
 
-<!-- <%= form_tag :action => 'index' do%>
-<strong>Select device: </strong>  <%= collection_select(:timesheet, :employee_id, Employee.all, :id, :name, prompt: true) %>
-
-<br></br>
-<% end %> -->
-
-<%= form_tag({ :action => "index"}, { :method => "get", :id => "contacts-index" }) do %>
-
-<%= collection_select(:timesheet, :employee_id, Employee.all, :id, :name, prompt: true, { :id => "switch-view" }) %>
-
-  <!-- <%= select_tag(:view, options_for_select([["10", 10], ["25", 25], ["50", 50]]), { :id => "switch-view" }) %> --><% end %>
+<!-- Below lines of code will display the drop down box only for the Admin user  -->
+<% if can? :update, @user %> 
+	<%= form_tag({ controller=> "timesheets", :action => "index"}, { :method => "get", :id => "employees-index" }) do %> 
+		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		<%= select_tag 'employee_id', options_for_select(Employee.all.map { |c| ["#{c.name}", c.id]}),:prompt => 'Select Employee', :id => "switch-view" %>
+	<% end %> 
+<% end %> 
 
 <div id="calendar">
 	
@@ -20,18 +20,13 @@
     <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m-01") %>
     <%= h @date.strftime("%B %Y") %>
     <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m-01") %>
-  </h2>
+</h2>
   	
   <%= calendar_for @timesheets, :year => @date.year, :month => @date.month do |calendar| %>
-    <%= calendar.head('sun','mon', 'tue', 'wed', 'thu', 'fri', 'sat') %>
+  <%= calendar.head('sun','mon', 'tue', 'wed', 'thu', 'fri', 'sat') %>
     <%= calendar.day(:day_method => :date) do |date, timesheets| %>
-    <%= date.day %>
-      
-      <ul>
-      <!-- <% for timesheet in timesheets %>
-        <li><%= link_to h(timesheet.id), timesheet %></li>
-      <% end %> -->
-      
+    <%= date.day %>  
+    <ul>     
        <% for timesheet in timesheets %> 
          <% timesheet.tasks.each do |task| %> 
          <li><%= link_to h(task.project.name), timesheet %></li>			      
@@ -41,7 +36,9 @@
     <% end %>
   <% end %>
 </div>
+
 <%= button_to "Back", '/',:method => :get %>
+
 
 
 <!-- <table>

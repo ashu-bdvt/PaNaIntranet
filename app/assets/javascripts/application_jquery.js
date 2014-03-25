@@ -13,12 +13,8 @@ function add_fields(link, association, content) {
   $(link).parent().before(content.replace(regexp, new_id));
 }
 
-// $(function() {
-  // window.location.href = "/timesheets";
-// });
-
 $(document).ready(function() {
   $("#switch-view").change(function() {
-    $("#contacts-index").submit();
+    $("#employees-index").submit();
   });
 });

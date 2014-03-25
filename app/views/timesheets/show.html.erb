@@ -12,13 +12,16 @@
 </p>
 
 <% @timesheet.tasks.each do |task| %> 
-    <b>Time:</b>
-    <%= task. time%><br/>   
-    <b>Project:</b>  
+    <h>===========================================================================================================</h>
+    <br>Time:
+    <%= task. time%>Hours    
+    <br>Project:
     <%= task. project.name %>  
-    <b>Comment:</b>  
-	<%= task.comment %>	 		      
+    <br>Comment:
+	<%= task.comment %>	 	
 <% end %>    
+	<h>===========================================================================================================</h>     
 
-<%= link_to 'Edit', edit_timesheet_path(@timesheet) %> |
-<%= link_to 'Back', timesheets_path %>
+<%= button_to "Edit Timesheet", edit_timesheet_path(@timesheet), :method => :get %>
+<%= button_to "Back", timesheets_path,:method => :get %>
+

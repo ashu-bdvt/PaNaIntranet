@@ -24,15 +24,6 @@ class LeavesController < ApplicationController
    
  end
   
-  # def new
-    # @leave = Leave.new
-# 
-    # respond_to do |format|
-      # format.html # new.html.erb
-      # format.json { render json: @leave }
-    # end
-  # end
-  
   def create
     Rails.logger.info "Create Method called.."
     @leave = Leave.new(params[:leave])

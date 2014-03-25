@@ -1,19 +1,47 @@
 class TimesheetsController < ApplicationController
+  
+  #Handle auhentication and take the suer to login page in not signed in.
+  before_filter :authenticate_user!
+  
+  #Handle authorization and raise exception when the user does not have permission.
+  load_and_authorize_resource 
+  #load_and_authorize_resource :class => Timesheet
+  
+  #handle the cache and take the user to login page when back button is clicked after signout.
+  before_filter :set_cache_buster
+
+  def set_cache_buster
+    response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+  end
+  
   # GET /timesheets
   # GET /timesheets.json
   def index
-    #@timesheets = Timesheet.all
-    @date = params[:month] ? Date.parse(params[:month]) : Date.today
     
-    #Display only the timesheet of the employee who has logged in 
-    @timesheets = Timesheet.where("employee_id" => current_user.employee.id).all
+   if can? :update, @user 
+      
+      #Display all the user timesheets for the admin user 
+      @date = params[:month] ? Date.parse(params[:month]) : Date.today
+    
+      #Display only the timesheet of the employee who has logged in 
+      @timesheets = Timesheet.where("employee_id" => params[:employee_id]).all 
+     
+     else  
+       #Display all there timesheets for the proadmin and employee user
+       @date = params[:month] ? Date.parse(params[:month]) : Date.today
+       
+       #Display only the timesheet of the employee who has logged in
+       @timesheets = Timesheet.where("employee_id" => current_user.employee.id).all                 
+     end
     
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @timesheets }
     end
   end
-
+  
   # GET /timesheets/1
   # GET /timesheets/1.json
   def show
@@ -67,6 +95,7 @@ class TimesheetsController < ApplicationController
   # PUT /timesheets/1
   # PUT /timesheets/1.json
   def update
+    
     @timesheet = Timesheet.find(params[:id])
 
     respond_to do |format|
@@ -91,4 +120,5 @@ class TimesheetsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
 end

@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @timesheet %> |
-<%= link_to 'Back', timesheets_path %>
+<%= button_to "Show", @timesheet, :method => :get %>
+<%= button_to "Back", timesheets_path,:method => :get %>
