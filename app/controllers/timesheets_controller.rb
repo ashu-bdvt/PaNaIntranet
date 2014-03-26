@@ -56,10 +56,12 @@ class TimesheetsController < ApplicationController
   # GET /timesheets/new
   # GET /timesheets/new.json
   def new
-    @timesheet = Timesheet.new
     
+    @timesheet = Timesheet.new
+   
     1.times do
-    task = @timesheet.tasks.build
+    project_effort = @timesheet.project_efforts.build
+    1.times { project_effort.tasks.build }
     end
     
     respond_to do |format|

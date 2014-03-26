@@ -17,13 +17,13 @@
   </div>
   
   <div class="field">
-  <%= f.fields_for :tasks do |builder| %> 
-  <%= render 'task', :f => builder %>
+  <%= f.fields_for :project_efforts do |builder| %> 
+  <%= render 'project_effort', :f => builder %>
   <% end %>
   </div>
   
   <div>	
-  <%= link_to_add_fields "Add New Task", f, :tasks %>
+  <%= link_to_add_fields "Add New Project", f, :project_efforts %>
   </div>
   
   <div class="actions">

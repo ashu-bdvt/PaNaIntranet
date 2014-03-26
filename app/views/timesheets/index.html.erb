@@ -28,8 +28,8 @@
     <%= date.day %>  
     <ul>     
        <% for timesheet in timesheets %> 
-         <% timesheet.tasks.each do |task| %> 
-         <li><%= link_to h(task.project.name), timesheet %></li>			      
+         <% timesheet.project_efforts.each do |project_effort| %> 
+         <li><%= link_to h(project_effort.project.name), timesheet %></li>			      
 		 <% end %>   
        <% end %>      
     </ul> 
