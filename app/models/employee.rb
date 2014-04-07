@@ -1,4 +1,5 @@
 class Employee < ActiveRecord::Base
+  
   belongs_to :manager, :class_name => "Employee", :foreign_key => "manager_id"
   has_many :devices
   has_many :leaves
@@ -17,9 +18,6 @@ class Employee < ActiveRecord::Base
       errors.add(:date_of_joining, "must be less that current date")
     end
   end
-  
-  #basavaraj.hattigoudar@gmail.com
-  #basavaraj510@gmail.com
   
   mount_uploader :photo, ImageUploader
 =begin  
